@@ -3,6 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SQLiteService } from '../database/services/sqlite.service';
+import { DbnameVersionService } from '../database/services/dbname-version.service';
+import { SerializeService } from '../database/services/serialize.service';
+import { OrmService } from '../database/services/orm.service';
+import { StorageService } from '../database/services/storage.service';
+import { ComicsService } from './modules/shared/services/comics.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -10,9 +17,17 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    SQLiteService,
+    DbnameVersionService,
+    SerializeService,
+    OrmService,
+    StorageService,
+    ComicsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

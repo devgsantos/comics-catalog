@@ -1,16 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne, OneToMany, ManyToOne, JoinColumn } from 'typeorm';
 
 
-@Entity()
-export class userList {
-  @PrimaryGeneratedColumn()
-  id!: number;
-
-  @Column('text',{ nullable:true })
-  name!: string;
-}
-
-@Entity()
+@Entity('result')
 export class Result {
   @PrimaryGeneratedColumn()
   id!: number;

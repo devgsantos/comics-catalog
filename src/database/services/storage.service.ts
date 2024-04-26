@@ -5,6 +5,7 @@ import { DbnameVersionService } from './dbname-version.service';
 import { UserUpgradeStatements } from '../upgrades/user.upgrade.statements';
 import { User } from '../models/user.model';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { SerializeService } from './serialize.service';
 
 @Injectable()
 export class StorageService {
@@ -17,8 +18,11 @@ export class StorageService {
   private db!: SQLiteDBConnection;
   private isUserReady: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
-  constructor(private sqliteService: SQLiteService,
-  private dbVerService: DbnameVersionService) {
+  constructor(
+    private sqliteService: SQLiteService,
+    private dbVerService: DbnameVersionService,
+    private serializeService: SerializeService
+    ) {
     // Table upgrade schema
     this.versionUpgrades = this.uUpdStmts.userUpgrades;
     // Table migrations
@@ -42,7 +46,8 @@ export class StorageService {
     //  Insert table migrations or version as second param
     this.dbVerService.set(this.databaseName,1);
 
-    await this.getUsers();
+    // await this.getUsers();
+    
   }
 
   userState() {

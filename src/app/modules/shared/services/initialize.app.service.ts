@@ -20,7 +20,32 @@ export class InitializeAppService {
   }
 
   async initializeApp() {
-    const DB_USERS = 'comics'
-    await this.storageService.initializeDatabase(DB_USERS);
+    await this.sqliteService.initializePlugin().then(async (ret) => {
+      this.platform = this.sqliteService.platform;
+      try {
+        if( this.sqliteService.platform === 'web') {
+          await this.sqliteService.initWebStore();
+        }
+        // Initialize the myuserdb database
+        const DB_USERS = 'comics'
+        await this.storageService.initializeDatabase(DB_USERS);
+        // Here Initialize MOCK_DATA if required
+
+        // Initialize whatever database and/or MOCK_DATA you like
+
+        if( this.sqliteService.platform === 'web') {
+          await this.sqliteService.saveToStore(DB_USERS);
+        }
+
+        this.isAppInit = true;
+
+      } catch (error) {
+        console.log(`initializeAppError: ${error}`);
+        await Toast.show({
+          text: `initializeAppError: ${error}`,
+          duration: 'long'
+        });
+      }
+    });
   }
 }
