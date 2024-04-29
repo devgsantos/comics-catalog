@@ -26,15 +26,16 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    try {
-      this.initializeAppService.initializeApp()
-      .then(() => {
-        this.getComicsData();
-      });
+    // try {
+    //   this.initializeAppService.initializeApp()
+    //   .then(() => {
+    //     this.getComicsData();
+    //   });
 
-    } catch(err) {
-      throw new Error(`Error: ${err}`);
-    }
+    // } catch(err) {
+    //   throw new Error(`Error: ${err}`);
+    // }
+    this.getComicsData();
   }
 
   getComicsData() {
@@ -45,4 +46,5 @@ export class AppComponent implements OnInit {
       }
     })
   }
+
 }

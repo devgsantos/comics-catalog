@@ -5,10 +5,10 @@ export interface Root {
     attributionText: string
     attributionHTML: string
     etag: string
-    data: Data
+    data: iData
 }
 
-export interface Data {
+export interface iData {
     offset: number
     limit: number
     total: number
@@ -21,70 +21,70 @@ export interface iResult {
     name: string
     description: string
     modified: string
-    thumbnail: Thumbnail
+    thumbnail: iThumbnail
     resourceURI: string
-    comics: Comics
-    series: Series
-    stories: Stories
-    events: Events
-    urls: Url[]
+    comics: iComics
+    series: iSeries
+    stories: iStories
+    events: iEvents
+    urls: iUrl[]
 }
 
-export interface Thumbnail {
+export interface iThumbnail {
     path: string
     extension: string
 }
 
-export interface Comics {
+export interface iComics {
     available: number
     collectionURI: string
-    items: Item[]
+    items: iItem[]
     returned: number
 }
 
-export interface Item {
+export interface iItem {
     resourceURI: string
     name: string
 }
 
-export interface Series {
+export interface iSeries {
     available: number
     collectionURI: string
-    items: Item2[]
+    items: iItem2[]
     returned: number
 }
 
-export interface Item2 {
+export interface iItem2 {
     resourceURI: string
     name: string
 }
 
-export interface Stories {
+export interface iStories {
     available: number
     collectionURI: string
-    items: Item3[]
+    items: iItem3[]
     returned: number
 }
 
-export interface Item3 {
+export interface iItem3 {
     resourceURI: string
     name: string
     type: string
 }
 
-export interface Events {
+export interface iEvents {
     available: number
     collectionURI: string
-    items: Item4[]
+    items: iItem4[]
     returned: number
 }
 
-export interface Item4 {
+export interface iItem4 {
     resourceURI: string
     name: string
 }
 
-export interface Url {
+export interface iUrl {
     type: string
     url: string
 }

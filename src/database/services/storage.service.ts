@@ -39,7 +39,7 @@ export class StorageService {
     this.db = await this.sqliteService.openDatabase(this.databaseName,
                                           false,
                                           'no-encryption',
-                                         //  Insert table migrations or version below
+                                         // Insert table migrations or version below
                                           1,
                                           false
     );

@@ -1,3 +1,377 @@
+// import { EntitySchema } from 'typeorm';
+
+// export interface Result {
+//     id?: number;
+//     name?: string;
+//     description?: string;
+//     modified?: string;
+//     thumbnail?: Thumbnail;
+//     resourceURI?: string;
+//     comics?: Comics[];
+//     series?: Series[];
+//     stories?: Stories[];
+//     events?: Events[];
+//     urls?: Url[];
+// }
+
+// export const ResultSchema = new EntitySchema<Result>({
+//   name: 'Result',
+//   columns: {
+//       id: {
+//           type: Number,
+//           primary: true,
+//           generated: true,
+//       },
+//       name: {
+//           type: 'text',
+//           nullable: true,
+//       },
+//       description: {
+//           type: 'text',
+//           nullable: true,
+//       },
+//       modified: {
+//           type: 'text',
+//           nullable: true,
+//       },
+//       resourceURI: {
+//           type: 'text',
+//           nullable: true,
+//       },
+//   },
+//   relations: {
+//       thumbnail: {
+//           type: 'one-to-one',
+//           target: () => 'Thumbnail',
+//           cascade: true,
+//           eager: true,
+//       },
+//       comics: {
+//           type: 'one-to-many',
+//           target: () => 'Comics',
+//           cascade: true,
+//       },
+//       series: {
+//           type: 'one-to-many',
+//           target: () => 'Series',
+//           cascade: true,
+//       },
+//       stories: {
+//           type: 'one-to-many',
+//           target: () => 'Stories',
+//           cascade: true,
+//       },
+//       events: {
+//           type: 'one-to-many',
+//           target: () => 'Events',
+//           cascade: true,
+//       },
+//       urls: {
+//           type: 'one-to-many',
+//           target: () => 'Url',
+//           cascade: true,
+//       },
+//   },
+// });
+
+// export interface Thumbnail {
+//     id?: number;
+//     path?: string;
+//     extension?: string;
+// }
+
+// export const ThumbnailSchema = new EntitySchema<Thumbnail>({
+//     name: 'Thumbnail',
+//     columns: {
+//         id: {
+//             type: Number,
+//             primary: true,
+//             generated: true,
+//         },
+//         path: {
+//             type: 'text',
+//             nullable: true,
+//         },
+//         extension: {
+//             type: 'text',
+//             nullable: true,
+//         },
+//     }
+// });
+
+// export interface Comics {
+//     id?: number;
+//     available?: number;
+//     collectionURI?: string;
+//     items?: Item[];
+// }
+
+// export const ComicsSchema = new EntitySchema<Comics>({
+//     name: 'Comics',
+//     columns: {
+//         id: {
+//             type: Number,
+//             primary: true,
+//             generated: true,
+//         },
+//         available: {
+//             type: 'text',
+//             nullable: true,
+//         },
+//         collectionURI: {
+//             type: 'text',
+//             nullable: true,
+//         },
+//     },
+//     relations: {
+//         items: {
+//             type: 'one-to-many',
+//             target: 'Item',
+//             cascade: true,
+//         },
+//     },
+// });
+
+// export interface Item {
+//     id?: number;
+//     resourceURI?: string;
+//     name?: string;
+// }
+
+// export const ItemSchema = new EntitySchema<Item>({
+//     name: 'Item',
+//     columns: {
+//         id: {
+//             type: Number,
+//             primary: true,
+//             generated: true,
+//         },
+//         resourceURI: {
+//             type: 'text',
+//             nullable: true,
+//         },
+//         name: {
+//             type: 'text',
+//             nullable: true,
+//         },
+//     }
+// });
+
+// // Definição para Series
+// export interface Series {
+//     id?: number;
+//     available?: number;
+//     collectionURI?: string;
+//     items?: Item2[];
+// }
+
+// export const SeriesSchema = new EntitySchema<Series>({
+//     name: 'Series',
+//     columns: {
+//         id: {
+//             type: Number,
+//             primary: true,
+//             generated: true,
+//         },
+//         available: {
+//             type: 'text',
+//             nullable: true,
+//         },
+//         collectionURI: {
+//             type: 'text',
+//             nullable: true,
+//         },
+//     },
+//     relations: {
+//         items: {
+//             type: 'one-to-many',
+//             target: 'Item2',
+//             cascade: true,
+//         }
+//     },
+// });
+
+// // Definição para Stories
+// export interface Stories {
+//     id?: number;
+//     available?: number;
+//     collectionURI?: string;
+//     items?: Item3[];
+// }
+
+// export const StoriesSchema = new EntitySchema<Stories>({
+//     name: 'Stories',
+//     columns: {
+//         id: {
+//             type: Number,
+//             primary: true,
+//             generated: true,
+//         },
+//         available: {
+//             type: 'text',
+//             nullable: true,
+//         },
+//         collectionURI: {
+//             type: 'text',
+//             nullable: true,
+//         },
+//     },
+//     relations: {
+//         items: {
+//             type: 'one-to-many',
+//             target: 'Item3',
+//             cascade: true,
+//         }
+//     },
+// });
+
+// // Definição para Events
+// export interface Events {
+//     id?: number;
+//     available?: number;
+//     collectionURI?: string;
+//     items?: Item4[];
+// }
+
+// export const EventsSchema = new EntitySchema<Events>({
+//     name: 'Events',
+//     columns: {
+//         id: {
+//             type: Number,
+//             primary: true,
+//             generated: true,
+//         },
+//         available: {
+//             type: 'text',
+//             nullable: true,
+//         },
+//         collectionURI: {
+//             type: 'text',
+//             nullable: true,
+//         },
+//     },
+//     relations: {
+//         items: {
+//             type: 'one-to-many',
+//             target: 'Item4',
+//             cascade: true,
+//         }
+//     },
+// });
+
+// // Definição para Item2
+// export interface Item2 {
+//     id?: number;
+//     resourceURI?: string;
+//     name?: string;
+// }
+
+// export const Item2Schema = new EntitySchema<Item2>({
+//     name: 'Item2',
+//     columns: {
+//         id: {
+//             type: Number,
+//             primary: true,
+//             generated: true,
+//         },
+//         resourceURI: {
+//             type: 'text',
+//             nullable: true,
+//         },
+//         name: {
+//             type: 'text',
+//             nullable: true,
+//         },
+//     }
+// });
+
+// // Definição para Item3
+// export interface Item3 {
+//     id?: number;
+//     resourceURI?: string;
+//     name?: string;
+//     type?: string;
+// }
+
+// export const Item3Schema = new EntitySchema<Item3>({
+//     name: 'Item3',
+//     columns: {
+//         id: {
+//             type: Number,
+//             primary: true,
+//             generated: true,
+//         },
+//         resourceURI: {
+//             type: 'text',
+//             nullable: true,
+//         },
+//         name: {
+//             type: 'text',
+//             nullable: true,
+//         },
+//         type: {
+//             type: 'text',
+//             nullable: true,
+//         },
+//     }
+// });
+
+// // Definição para Url
+// export interface Url {
+//     id?: number;
+//     type?: string;
+//     url?: string;
+// }
+
+
+// export const UrlSchema = new EntitySchema<Url>({
+//     name: 'Url',
+//     columns: {
+//         id: {
+//             type: Number,
+//             primary: true,
+//             generated: true,
+//         },
+//         type: {
+//             type: 'text',
+//             nullable: true,
+//         },
+//         url: {
+//             type: 'text',
+//             nullable: true,
+//         },
+//     }
+// });
+
+// export interface Item4 {
+//   id: number
+//   resourceURI: string
+//   name: string
+// }
+
+// export const Item4Schema = new EntitySchema<Item4>({
+//   name: 'Item2',
+//   columns: {
+//       id: {
+//           type: Number,
+//           primary: true,
+//           generated: true,
+//       },
+//       resourceURI: {
+//           type: 'text',
+//           nullable: true,
+//       },
+//       name: {
+//           type: 'text',
+//           nullable: true,
+//       },
+//   }
+// });
+
+
+
+
+
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne, OneToMany, ManyToOne, JoinColumn } from 'typeorm';
 
 
@@ -38,7 +412,7 @@ export class Result {
   urls!: Url[];
 }
 
-@Entity()
+@Entity({name: 'thumbnail'})
 export class Thumbnail {
   @PrimaryGeneratedColumn()
   id!: number;
@@ -53,7 +427,7 @@ export class Thumbnail {
   result!: Result;
 }
 
-@Entity()
+@Entity('comics')
 export class Comics {
   @PrimaryGeneratedColumn()
   id!: number;
@@ -71,7 +445,7 @@ export class Comics {
   result!: Result;
 }
 
-@Entity()
+@Entity('item')
 export class Item {
   @PrimaryGeneratedColumn()
   id!: number;
@@ -86,7 +460,7 @@ export class Item {
   comics!: Comics;
 }
 
-@Entity()
+@Entity('series')
 export class Series {
   @PrimaryGeneratedColumn()
   id!: number;
@@ -104,7 +478,7 @@ export class Series {
   result!: Result;
 }
 
-@Entity()
+@Entity('item2')
 export class Item2 {
   @PrimaryGeneratedColumn()
   id!: number;
@@ -119,7 +493,7 @@ export class Item2 {
   series!: Series;
 }
 
-@Entity()
+@Entity('stories')
 export class Stories {
   @PrimaryGeneratedColumn()
   id!: number;
@@ -137,7 +511,7 @@ export class Stories {
   result!: Result;
 }
 
-@Entity()
+@Entity('item3')
 export class Item3 {
   @PrimaryGeneratedColumn()
   id!: number;
@@ -155,7 +529,7 @@ export class Item3 {
   stories!: Stories;
 }
 
-@Entity()
+@Entity('events')
 export class Events {
   @PrimaryGeneratedColumn()
   id!: number;
@@ -173,7 +547,7 @@ export class Events {
   result!: Result;
 }
 
-@Entity()
+@Entity('item4')
 export class Item4 {
   @PrimaryGeneratedColumn()
   id!: number;
@@ -188,7 +562,7 @@ export class Item4 {
   events!: Events;
 }
 
-@Entity()
+@Entity('url')
 export class Url {
   @PrimaryGeneratedColumn()
   id!: number;

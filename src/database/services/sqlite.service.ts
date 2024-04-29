@@ -3,6 +3,10 @@ import { Injectable } from '@angular/core';
 import { Capacitor } from '@capacitor/core';
 import { CapacitorSQLite, SQLiteConnection, SQLiteDBConnection, CapacitorSQLitePlugin,
   capSQLiteUpgradeOptions, capSQLiteResult, capSQLiteValues} from '@capacitor-community/sqlite';
+import { DataSource } from 'typeorm';
+import sqliteParams from '../sqliteParams';
+import * as entities from '../entities';
+
 
 @Injectable()
 
@@ -12,6 +16,8 @@ export class SQLiteService {
   platform!: string;
   sqlitePlugin!: CapacitorSQLitePlugin;
   native: boolean = false;
+  dbConnection!: DataSource;
+  
   constructor() {
   }
   /**
@@ -48,6 +54,27 @@ export class SQLiteService {
     await db.open();
     return db;
   }
+
+  // async openDatabase(): Promise<void> {
+  //  try {
+  //   this.dbConnection = new DataSource({
+  //     type: 'capacitor',
+  //     driver: sqliteParams.connection,
+  //     database: 'comics',
+  //     mode: 'no-encryption',
+  //     entities: entities,
+  //     migrations: [], //["../migrations/author/*{.ts,.js}"]
+  //     subscribers: [],
+  //     logging: [/*'query',*/ 'error','schema'],
+  //     synchronize: false,     // !!!You will lose all data in database if set to `true`
+  //     migrationsRun: false,  // Required with capacitor type
+  //   });
+  //   this.dbConnection = await this.dbConnection.initialize();
+  //   // this.dbConnection.synchronize(true);
+  //  } catch (error) {
+  //   console.error('Failed to initialize the database:', error);
+  //  }
+  // }
 
   async retrieveConnection(dbName:string, readonly: boolean): Promise<SQLiteDBConnection> {
     return await this.sqliteConnection.retrieveConnection(dbName, readonly);

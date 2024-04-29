@@ -10,6 +10,8 @@ import { OrmService } from '../database/services/orm.service';
 import { StorageService } from '../database/services/storage.service';
 import { ComicsService } from './modules/shared/services/comics.service';
 import { HttpClientModule } from '@angular/common/http';
+import 'reflect-metadata';
+
 
 @NgModule({
   declarations: [
