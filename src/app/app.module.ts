@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import 'reflect-metadata';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,7 +11,7 @@ import { OrmService } from '../database/services/orm.service';
 import { StorageService } from '../database/services/storage.service';
 import { ComicsService } from './modules/shared/services/comics.service';
 import { HttpClientModule } from '@angular/common/http';
-import 'reflect-metadata';
+import { AppInitializeService } from './modules/shared/services/app-initialize.service';
 
 
 @NgModule({
@@ -28,7 +29,14 @@ import 'reflect-metadata';
     SerializeService,
     OrmService,
     StorageService,
-    ComicsService
+    ComicsService,
+    AppInitializeService,
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: (appInitService: AppInitializeService) => () => appInitService.initializeApp(),
+    //   multi: true,
+    //   deps: [AppInitializeService]
+    // }
   ],
   bootstrap: [AppComponent]
 })
